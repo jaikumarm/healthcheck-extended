@@ -1,4 +1,4 @@
-import imp
+import importlib
 import json
 import os
 import six
@@ -205,7 +205,7 @@ class EnvironmentDump(object):
                                    'micro': sys.version_info.micro,
                                    'releaselevel': sys.version_info.releaselevel,
                                    'serial': sys.version_info.serial}}
-        if imp.find_module('pkg_resources'):
+        if importlib.util.find_spec('pkg_resources'):
             import pkg_resources
             packages = dict([(p.project_name, p.version) for p in pkg_resources.working_set])
             result['packages'] = packages
